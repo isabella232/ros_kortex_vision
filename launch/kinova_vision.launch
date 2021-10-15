@@ -10,14 +10,14 @@
   <arg name="num_worker_threads" default="4"
        doc="Worker threads for the nodelet manager" />
 
-  <arg name="camera" default="camera"
+  <arg name="camera" default="kinova_camera"
        doc="'camera' should uniquely identify the device. All topics are pushed down
             into the 'camera' namespace." />
 
-  <arg name="color_frame_id" default="camera_color_frame"
+  <arg name="color_frame_id" default="kinova_camera_color_frame"
        doc="Color camera frame identifier." />
 
-  <arg name="depth_frame_id" default="camera_depth_frame"
+  <arg name="depth_frame_id" default="kinova_camera_depth_frame"
        doc="Depth camera frame identifier." />
 
   <arg name="color_camera_info_url" default=""
@@ -92,12 +92,12 @@
     <node pkg="tf2_ros"
       type="static_transform_publisher"
       name="camera_depth_tf_publisher"
-      args="-0.0195 -0.005 0 0 0 0 camera_link $(arg depth_frame_id)" />
+      args="-0.0195 -0.005 0 0 0 0 kinova_camera_link $(arg depth_frame_id)" />
 
     <node pkg="tf2_ros"
       type="static_transform_publisher"
       name="camera_color_tf_publisher"
-      args="0 0 0 0 0 0 camera_link $(arg color_frame_id)" />
+      args="0 0 0 0 0 0 kinova_camera_link $(arg color_frame_id)" />
 
     <!-- Processing modules configuration-->
     <arg name="rgb_processing"                  default="true"  />
